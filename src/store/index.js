@@ -20,8 +20,26 @@ const cartSlice = createSlice({
   },
 });
 
+const initialProductListState = {
+  isShowing: true,
+  items: [{ title: 'Test Item 1', quantity: 3, total: 18, price: 6 }],
+};
+
+const productListSlice = createSlice({
+  name: 'prodList',
+  initialState: initialProductListState,
+  reducers: {
+    displayItem() {},
+
+    toggleProdListShowing(state) {
+      if (cartSlice.isShowing) {
+      }
+    },
+  },
+});
+
 const store = configureStore({
-  reducer: cartSlice.reducer,
+  reducer: { cart: cartSlice.reducer, prodList: productListSlice.reducer },
 });
 
 export const cartActions = cartSlice.actions;

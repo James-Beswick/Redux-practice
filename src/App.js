@@ -6,6 +6,8 @@ import Products from './components/Shop/Products';
 import Notification from './components/UI/Notification';
 import { uiActions } from './store/ui-slice';
 
+let isInitial = true;
+
 function App() {
   const dispatch = useDispatch();
   const cartIsShowing = useSelector(state => state.ui.cartIsVisible);
@@ -39,6 +41,11 @@ function App() {
         })
       );
     };
+
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
 
     sendCartData().catch(err => {
       dispatch(
